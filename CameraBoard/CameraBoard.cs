@@ -1,6 +1,8 @@
-﻿using GorillaExtensions;
+﻿using CameraBoard.Utils;
+using GorillaExtensions;
 using Photon.Pun;
 using Photon.Realtime;
+using Photon.Voice.PUN;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -58,6 +60,14 @@ namespace CameraBoard
                     VRRig rig = GorillaGameManager.instance.FindPlayerVRRig(PhotonNetwork.PlayerList[i]);
                     players[i].transform.GetChild(0).gameObject.GetComponent<RawImage>().texture = rig.mainSkin.material.mainTexture;
                     players[i].transform.GetChild(0).gameObject.GetComponent<RawImage>().color = rig.mainSkin.material.color;
+
+                    foreach (GorillaPlayerScoreboardLine line in GameObject.FindObjectsOfType<GorillaPlayerScoreboardLine>())
+                    {
+                        if(line.linePlayer == PhotonNetwork.PlayerList[i])
+                        {
+                            players[i].transform.GetChild(1).gameObject.SetActive(line.speakerIcon.activeInHierarchy);
+                        }
+                    }
                 } else
                 {
                     players[i].SetActive(false);
