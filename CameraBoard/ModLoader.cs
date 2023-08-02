@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CameraBoard
 {
@@ -15,7 +16,9 @@ namespace CameraBoard
     {
         public static ModLoader instance;
         GameObject ui;
+        GameObject uiPosThing;
         Harmony harmony;
+
         void OnEnable()
         {
             instance = this;

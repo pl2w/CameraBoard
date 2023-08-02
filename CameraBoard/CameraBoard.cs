@@ -39,12 +39,13 @@ namespace CameraBoard
 
         void RefreshBoard()
         {
+            foreach (GameObject p in players)
+            {
+                p.SetActive(false);
+            }
+
             if (!PhotonNetwork.InRoom)
             {
-                foreach (GameObject p in players)
-                {
-                    p.SetActive(false);
-                }
                 return;
             }
 
