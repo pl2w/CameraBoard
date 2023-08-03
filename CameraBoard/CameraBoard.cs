@@ -56,6 +56,7 @@ namespace CameraBoard
                 {
                     players[i].SetActive(true);
                     players[i].GetComponent<Text>().text = PhotonNetwork.PlayerList[i].NickName.ToUpper();
+                    players[i].GetComponent<Text>().text.font = GameObject.Find("Player Objects/Local VRRig/Local Gorilla Player/rig/NameTagAnchor/NameTagCanvas/Text/")?.GetComponent<Text>().font;
                     VRRig rig = GorillaGameManager.instance.FindPlayerVRRig(PhotonNetwork.PlayerList[i]);
                     players[i].transform.GetChild(0).gameObject.GetComponent<RawImage>().texture = rig.mainSkin.material.mainTexture;
                     players[i].transform.GetChild(0).gameObject.GetComponent<RawImage>().color = rig.mainSkin.material.color;
